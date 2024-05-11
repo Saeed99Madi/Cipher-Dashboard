@@ -29,8 +29,8 @@ export default function DetailsView() {
       justifyContent: 'center',
     }}>
       <DetailsSection handleOpenEditSide={handleOpenEditSide}/>
-      <TakeawaysSection/>
-      <CreateDialog open={openEditSide} onClose={handleCloseEditSide} />
+      {/* <TakeawaysSection/>
+      <CreateDialog open={openEditSide} onClose={handleCloseEditSide} /> */}
   </Box>
   );
 }

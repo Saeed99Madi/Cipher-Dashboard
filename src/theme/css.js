@@ -8,14 +8,14 @@ import { autocompleteClasses } from '@mui/material/Autocomplete';
 // ----------------------------------------------------------------------
 
 export const paper = ({ theme, bgcolor, dropdown }) => ({
-  ...bgBlur({
-    blur: 20,
-    opacity: 0.9,
-    color: theme.palette.background.paper,
-    ...(!!bgcolor && {
-      color: bgcolor,
-    }),
-  }),
+  // ...bgBlur({
+  //   blur: 20,
+  //   opacity: 0.9,
+  //   color: theme.palette.background.paper,
+  //   ...(!!bgcolor && {
+  //     color: bgcolor,
+  //   }),
+  // }),
   backgroundImage: 'url(/assets/cyan-blur.png), url(/assets/red-blur.png)',
   backgroundRepeat: 'no-repeat, no-repeat',
   backgroundPosition: 'top right, left bottom',

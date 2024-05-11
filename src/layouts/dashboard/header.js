@@ -108,8 +108,8 @@ export default function Header({ onOpenNav }) {
           ml: 2,
         }}  
       >
-        <Typography sx={{mr: 2.5, fontSize: '17.2px', fontWeight: 600}}>Sales team</Typography>
-        {tableData.slice(0, 5).map((item) => (
+        <Typography sx={{mr: 2.5, fontSize: '17.2px', fontWeight: 600}}>Cipher Employees Internal Portal</Typography>
+        {/* {tableData.slice(0, 5).map((item) => (
           <Avatar
             sx={{
               width: 32,
@@ -121,8 +121,8 @@ export default function Header({ onOpenNav }) {
             src={item?.user?.avatarUrl}
             key={item?.user?.id}
             alt={item?.user?.name} />
-        ))}
-        <Box
+        ))} */}
+        {/* <Box
           sx={{
             width: 32,
             height: 32,
@@ -138,7 +138,7 @@ export default function Header({ onOpenNav }) {
           }}
         >
           <HiPlus style={{color: '#2292f9'}}/>
-        </Box>
+        </Box> */}
       </Box>}
 
       <Stack
@@ -165,6 +165,7 @@ export default function Header({ onOpenNav }) {
         </Button> */}
         {/* <NotificationsPopover notificationIcon={headerData[0].notification} /> */}
         <AccountPopover />
+        <Typography sx={{mr: 2.5, fontSize: '17.2px', fontWeight: 600}}>Hi, Mohammed</Typography>
       </Stack>
     </>
   );

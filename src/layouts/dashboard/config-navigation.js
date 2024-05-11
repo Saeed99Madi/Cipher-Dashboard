@@ -43,7 +43,15 @@ const ICONS = {
   disabled: icon('ic_disabled'),
   external: icon('ic_external'),
   menuItem: icon('ic_menu_item'),
-  sales: icon('ic_sales'),
+  // hello
+  account: icon('ic_account'),
+  department: icon('ic_department'),
+  inbox: icon('ic_inbox'),
+  logout: icon('ic_logout'),
+  services: icon('ic_services'),
+  to: icon('ic_to-do-list'),
+  overview: icon('ic_overview'),
+   // hello
   person: icon('ic_person'),
   dashboard: icon('ic_home'),
   settings: icon('ic_settings'),
@@ -69,29 +77,49 @@ export function useNavData() {
         subheader: '  ',
         items: [
           {
-            textColor: '#6EA9EE',
+            textColor: '#FFFFFF',
             itemAction: 'create_project',
-            title: 'Create Project',
-            path: '#',
-            icon: <Iconify color="#6EA9EE" icon="mingcute:add-line" />,
+            title: 'Over View',
+            path: paths.dashboard.root,
+            icon: ICONS.overview,
           },
-          // { title: 'Home', path: paths.dashboard.root, icon: ICONS.dashboard },
+          
           {
-            title: 'Sales team',
-            children: [
-              {
-                title: 'All reports',
-                path: paths.dashboard.root,
-                orderLength: _orders.length 
-              },
-              {
-                title: 'Takeaways',
-                path: paths.dashboard.group.five,
-                takeawaysLength: _mockTakeaways.length 
-              },
-            ],
+            title: 'To-do-list',
+            // children: [
+            //   {
+            //     title: 'Takeaways',
+            //     path: paths.dashboard.group.five,
+            //     takeawaysLength: _mockTakeaways.length 
+            //   },
+            // ],
             path: paths.dashboard.two,
-            icon: ICONS.sales,
+            textColor:"#FFFFFF",
+            icon: ICONS.to,
+          },
+          {
+            title: 'inpox',
+            path: paths.dashboard.two,
+             textColor:"#FFFFFF",
+            icon: ICONS.inbox,
+          },
+          {
+            title: 'Services',
+            path: paths.dashboard.two,
+             textColor:"#FFFFFF",
+            icon: ICONS.services,
+          },
+          {
+            title: 'Account',
+            path: paths.dashboard.two,
+             textColor:"#FFFFFF",
+            icon: ICONS.account,
+          },
+          {
+            title: 'Departments',
+            path: paths.dashboard.two,
+             textColor:"#FFFFFF",
+            icon: ICONS.department,
           },
           // {
           //   title: 'Shared with me',
@@ -135,6 +163,11 @@ export function useNavSettings() {
             title: 'Account settings',
             path: paths.dashboard.group.six,
             icon: ICONS.settings,
+          },
+          {
+            title: 'Log Out',
+            path: paths.dashboard.group.six,
+            icon: ICONS.logout,
           },
           // { title: 'Support', path: paths.dashboard.seven, icon: ICONS.support },
         ],

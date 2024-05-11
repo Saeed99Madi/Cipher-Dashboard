@@ -18,7 +18,8 @@ import CustomNumber from './CustomNumber';
 export default function NavItem({ item, open, depth, active, config, externalLink, Sub , isOpen,  ...other }) {
   const { textColor, title, path, icon, info, children, disabled, caption, roles, orderLength, takeawaysLength } = item;
 
-  // console.log(item);
+  console.log(config.iconSize, "config.iconSize");
+  
 
   const subItem = depth !== 1;
   const renderContent = (

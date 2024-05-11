@@ -11,6 +11,9 @@ export function drawer(theme) {
   return {
     MuiDrawer: {
       styleOverrides: {
+        paper:{
+          backgroundColor:"#584495",
+        },
         root: ({ ownerState }) => ({
           ...(ownerState.variant === 'temporary' && {
             [`& .${drawerClasses.paper}`]: {

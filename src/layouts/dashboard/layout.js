@@ -37,11 +37,11 @@ export default function DashboardLayout({ children }) {
 
   const isMini = settings.themeLayout === 'mini';
 
-  const renderNavMini = <NavMini />;
+  const renderNavMini = <NavMini lgUp={lgUp}/>;
 
   const renderHorizontal = <NavHorizontal />;
 
-  const renderNavVertical = <NavVertical openNav={nav.value} onCloseNav={handleCloseNav} />;
+  const renderNavVertical = <NavVertical openNav={nav.value} onCloseNav={handleCloseNav} lgUp={lgUp}/>;
 
   if (isHorizontal) {
     return (

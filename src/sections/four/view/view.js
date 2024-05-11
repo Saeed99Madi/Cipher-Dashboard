@@ -1,228 +1,252 @@
-import { useCallback, useContext, useState } from 'react';
+import orderBy from 'lodash/orderBy';
+import { useState, useCallback } from 'react';
 // @mui
-import { Card, Table, TableBody, TableContainer, Container } from '@mui/material';
-// src
-import { useSettingsContext } from 'src/components/settings';
-import { useTable } from 'src/components/table';
-import { _orders } from 'src/_mock/_order';
-import { useBoolean } from 'src/hooks/use-boolean';
-import Scrollbar from 'src/components/scrollbar/scrollbar';
-import { applyFilter } from 'src/layouts/_common/searchbar/utils';
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
+import Container from '@mui/material/Container';
+// routes
 import { paths } from 'src/routes/paths';
-import { useRouter } from 'src/routes/hooks';
-import ShowingFiltersResult from 'src/components/ShowingFiltersResult';
-import { FiltersContext } from 'src/context/filtersContext';
-import TableHeadCustom from '../table-head-custom';
-import { emptyRows, getComparator } from '../utils';
-import OrderTableRow from '../order-table-row';
-import TableEmptyRows from '../table-empty-rows';
-import TableNoData from '../table-no-data';
-import Filters from '../Filters';
-import TablePaginationCustom from '../TablePaginationCustom';
+import { RouterLink } from 'src/routes/components';
+// hooks
+import { useBoolean } from 'src/hooks/use-boolean';
+// utils
+import { fTimestamp } from 'src/utils/format-time';
+// _mock
+import { _tours, _tourGuides, TOUR_SERVICE_OPTIONS, TOUR_SORT_OPTIONS } from 'src/_mock/_tour';
+// assets
+import { countries } from 'src/assets/data';
+// components
+import Iconify from 'src/components/iconify';
+import EmptyContent from 'src/components/empty-content';
+import { useSettingsContext } from 'src/components/settings';
+import CustomBreadcrumbs from 'src/components/custom-breadcrumbs';
+//
+import TourList from '../tour-list';
+import TourSort from '../tour-sort';
+import TourSearch from '../tour-search';
+import TourFilters from '../tour-filters';
+import TourFiltersResult from '../tour-filters-result';
 
 // ----------------------------------------------------------------------
 
-const TABLE_HEAD = [
-  { id: 'meetingReport', label: 'Meeting Report', width: '27%', isNavMiniWidth: '24%' },
-  { id: 'createdBy', label: 'Created by', width: '15%', isNavMiniWidth: '23%' },
-  { id: 'customer', label: 'Customer', width: '15%', isNavMiniWidth: '23%' },
-  { id: 'uploaded', label: 'Uploaded', width: '11%', align: 'center', isNavMiniWidth: '10%' },
-  { id: 'sentiment', label: 'Sentiment', width: '11%', isNavMiniWidth: '10%' },
-  { id: 'participants', label: 'Participants', width: '11%', isNavMiniWidth: '5%' },
-  { id: 'takeaway', label: 'Takeaway', width: '10%', isNavMiniWidth: '5%' },
-];
+const defaultFilters = {
+  destination: [],
+  tourGuides: [],
+  services: [],
+  startDate: null,
+  endDate: null,
+};
 
+// ----------------------------------------------------------------------
 
-export default function FourView() {
-  const table = useTable({ defaultOrderBy: 'orderNumber' });
+export default function TourListView() {
   const settings = useSettingsContext();
-  const {filters,
-    setFilters,
-    handleResetDateRange,
-    handleCloseRevenueDialog,
-    handleCloseSortBy
-  } = useContext(FiltersContext);
-  const [tableData, setTableData] = useState(_orders);
 
-  const router = useRouter();
+  const openFilters = useBoolean();
 
-  // const confirm = useBoolean();
-  const openDateRange = useBoolean();
-  const openRevenueDialog = useBoolean();
-  const openSortByDialog = useBoolean();
-  const openCreateDialog = useBoolean();
+  const [sortBy, setSortBy] = useState('latest');
 
-
-  const dateError =
-  filters.startDate && filters.endDate
-    ? filters.startDate.getTime() > filters.endDate.getTime()
-    : false;
-
-  const dataFiltered = applyFilter({
-    inputData: tableData,
-    comparator: getComparator,
-    filters,
-    dateError,
+  const [search, setSearch] = useState({
+    query: '',
+    results: [],
   });
 
-  const handleFilters = useCallback(
-    (name, value) => {
-      table.onResetPage();
-      setFilters((prevState) => ({
+  const [filters, setFilters] = useState(defaultFilters);
+
+  const dateError =
+    filters.startDate && filters.endDate
+      ? filters.startDate.getTime() > filters.endDate.getTime()
+      : false;
+
+  const dataFiltered = applyFilter({
+    inputData: _tours,
+    filters,
+    sortBy,
+    dateError,
+  });
+  console.log(_tours, "_tours")
+
+  const canReset =
+    (!!filters.startDate && !!filters.endDate);
+
+  const notFound = !dataFiltered.length && canReset;
+
+  const handleFilters = useCallback((name, value) => {
+    setFilters((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  }, []);
+
+  const handleSortBy = useCallback((newValue) => {
+    setSortBy(newValue);
+  }, []);
+
+  const handleSearch = useCallback(
+    (inputValue) => {
+      setSearch((prevState) => ({
         ...prevState,
-        [name]: value,
+        query: inputValue,
       }));
+
+      if (inputValue) {
+        const results = _tours.filter(
+          (tour) => tour.name.toLowerCase().indexOf(search.query.toLowerCase()) !== -1
+        );
+
+        setSearch((prevState) => ({
+          ...prevState,
+          results,
+        }));
+      }
     },
-    [setFilters, table]
+    [search.query]
   );
 
+  const handleResetFilters = useCallback(() => {
+    setFilters(defaultFilters);
+  }, []);
 
-const canReset =
-  !!filters.name || filters.status !== 'all' || (!!filters.startDate && !!filters.endDate);
-
-
-  const denseHeight = table.dense ? 52 : 72;
-
-  const notFound = (!dataFiltered.length && canReset) || !dataFiltered.length;
-
-  const handleDeleteRow = useCallback(
-    (id) => {
-      const deleteRow = tableData.filter((row) => row.id !== id);
-      setTableData(deleteRow);
-      table.onUpdatePageDeleteRow(dataFiltered.length);
-    },
-    [dataFiltered.length, table, tableData]
-  );
-
-  const handleViewRow = useCallback(
-    (id) => {
-      router.push(paths.dashboard.details(id));
-    },
-    [router]
-  );
-
-
-  const handleOnCloseDateRange = useCallback((type) => {
-    openDateRange.onFalse();
-    if (type !== 'continue') {
-      handleResetDateRange();
-    }
-  }, [handleResetDateRange, openDateRange]);
-  
-  const handleCloseRevenue = useCallback((type) => {
-    openRevenueDialog.onFalse();
-    if (type !== 'continue') {
-      handleCloseRevenueDialog();
-    }
-  }, [handleCloseRevenueDialog, openRevenueDialog]
-  );
-
-  const handleCloseSortByDialog = useCallback((type) => {
-    openSortByDialog.onFalse();
-    if (type !== 'continue') {
-      handleCloseSortBy();
-    }
-  }, [handleCloseSortBy, openSortByDialog])
-  
-  return (
-    <Container
-      maxWidth={settings.themeStretch ? false : 'xl'}
-      sx={{
-        '& .MuiPaper-root.MuiPaper-elevation': {
-          border: '1px solid #D6D8E1'
-        }
-      }}
+  const renderFilters = (
+    <Stack
+      spacing={3}
+      justifyContent="space-between"
+      alignItems={{ xs: 'flex-end', sm: 'center' }}
+      direction={{ xs: 'column', sm: 'row' }}
     >
-      <Card sx={{ m: '0 -1em' }}>
-        <Filters
-          openDateRange={openDateRange.value}
-          onCloseDateRange={handleOnCloseDateRange}
-          onOpenDateRange={openDateRange.onTrue}
-          openRevenueDialog={openRevenueDialog.value}
-          onCloseRevenueDialog={handleCloseRevenue}
-          onOpenRevenueDialog={openRevenueDialog.onTrue}
-          openSortByDialog={openSortByDialog.value}
-          onOpenSortByDialog={openSortByDialog.onTrue}
-          onCloseSortByDialog={handleCloseSortByDialog}
-          openCreateDialog={openCreateDialog.value}
-          onCloseCreateDialog={openCreateDialog.onFalse}
-          onOpenCreateDialog={openCreateDialog.onTrue}
+      <TourSearch
+        query={search.query}
+        results={search.results}
+        onSearch={handleSearch}
+        hrefItem={(id) => paths.dashboard.two}
+        // hrefItem={(id) => paths.dashboard.tour.details(id)}
+      />
+
+      <Stack direction="row" spacing={1} flexShrink={0}>
+        <TourFilters
+          open={openFilters.value}
+          onOpen={openFilters.onTrue}
+          onClose={openFilters.onFalse}
+          //
           filters={filters}
           onFilters={handleFilters}
+          //
+          canReset={canReset}
+          onResetFilters={handleResetFilters}
+          //
+          serviceOptions={TOUR_SERVICE_OPTIONS.map((option) => option.label)}
+          tourGuideOptions={_tourGuides}
+          destinationOptions={countries}
+          //
           dateError={dateError}
-          onContinueDateDialog={openDateRange.onFalse}
         />
-          <ShowingFiltersResult
-            handleOnCloseDateRange={handleOnCloseDateRange}
-            handleOnCloseRevenue={handleCloseRevenue}
-          />
-          <TableContainer
-            sx={{
-              position: 'relative',
-              overflow: 'unset',
-              m: ' 0 25px',
-              maxWidth: 'calc(100% - 50px)',
-            }}
-          >
-            <Scrollbar>
-              <Table size={table.dense ? 'small' : 'medium'} sx={{ minWidth: 960 }}>
-                <TableHeadCustom
-                  order={table.order}
-                  orderBy={table.orderBy}
-                  headLabel={TABLE_HEAD}
-                  rowCount={tableData.length}
-                  numSelected={table.selected.length}
-                />
 
-                <TableBody>
-                  {!table.dense ? 
-                    dataFiltered
-                    .slice(
-                      table.page * table.rowsPerPage,
-                      table.page * table.rowsPerPage + table.rowsPerPage
-                    )
-                      .map((row) => (
-                        <OrderTableRow
-                          key={row.id}
-                          row={row}
-                          selected={table.selected.includes(row.id)}
-                          onDeleteRow={() => handleDeleteRow(row.id)}
-                          onViewRow={() => handleViewRow(row.id)}
-                        />
-                      )) :
-                      dataFiltered
-                      .map((row) => (
-                        <OrderTableRow
-                          key={row.id}
-                          row={row}
-                          selected={table.selected.includes(row.id)}
-                          onDeleteRow={() => handleDeleteRow(row.id)}
-                          onViewRow={() => handleViewRow(row.id)}
-                        />
-                      ))
-                  }
+        <TourSort sort={sortBy} onSort={handleSortBy} sortOptions={TOUR_SORT_OPTIONS} />
+      </Stack>
+    </Stack>
+  );
 
-                  <TableEmptyRows
-                    height={denseHeight}
-                    emptyRows={emptyRows(table.page, table.rowsPerPage, tableData.length)}
-                  />
+  const renderResults = (
+    <TourFiltersResult
+      filters={filters}
+      onResetFilters={handleResetFilters}
+      //
+      canReset={canReset}
+      onFilters={handleFilters}
+      //
+      results={dataFiltered.length}
+    />
+  );
 
-                  <TableNoData notFound={notFound} />
-                </TableBody>
-              </Table>
-            </Scrollbar>
-          </TableContainer>
-          <TablePaginationCustom
-            count={dataFiltered.length}
-            page={table.page}
-            rowsPerPage={table.rowsPerPage}
-            onPageChange={table.onChangePage}
-            onRowsPerPageChange={table.onChangeRowsPerPage}
-            //
-            dense={table.dense}
-            onChangeDense={table.onChangeDense}
-          />
-        </Card>
+  return (
+    <Container maxWidth={settings.themeStretch ? false : 'lg'}>
+      <CustomBreadcrumbs
+        heading="List"
+        links={[
+          { name: 'Dashboard', href: paths.dashboard.root },
+          {
+            name: 'Tour',
+            href: paths.dashboard.root,
+          },
+          { name: 'List' },
+        ]}
+        // action={
+        //   <Button
+        //     component={RouterLink}
+        //     href={paths.dashboard.two}
+        //     variant="contained"
+        //     startIcon={<Iconify icon="mingcute:add-line" />}
+        //   >
+        //     New Tour
+        //   </Button>
+        // }
+        sx={{
+          mb: { xs: 3, md: 5 },
+        }}
+      />
+
+      <Stack
+        spacing={2.5}
+        sx={{
+          mb: { xs: 3, md: 5 },
+        }}
+      >
+        {renderFilters}
+
+        {canReset && renderResults}
+      </Stack>
+
+      {notFound && <EmptyContent title="No Data" filled sx={{ py: 10 }} />}
+
+      <TourList tours={dataFiltered} />
     </Container>
   );
 }
+
+// ----------------------------------------------------------------------
+
+const applyFilter = ({ inputData, filters, sortBy, dateError }) => {
+  const { services, destination, startDate, endDate, tourGuides } = filters;
+
+  const tourGuideIds = tourGuides.map((tourGuide) => tourGuide.id);
+
+  // SORT BY
+  if (sortBy === 'latest') {
+    inputData = orderBy(inputData, ['createdAt'], ['desc']);
+  }
+
+  if (sortBy === 'oldest') {
+    inputData = orderBy(inputData, ['createdAt'], ['asc']);
+  }
+
+  if (sortBy === 'popular') {
+    inputData = orderBy(inputData, ['totalViews'], ['desc']);
+  }
+
+  // FILTERS
+  if (!dateError) {
+    if (startDate && endDate) {
+      inputData = inputData.filter(
+        (tour) =>
+          fTimestamp(tour.available.startDate) >= fTimestamp(startDate) &&
+          fTimestamp(tour.available.endDate) <= fTimestamp(endDate)
+      );
+    }
+  }
+
+  if (destination.length) {
+    inputData = inputData.filter((tour) => destination.includes(tour.destination));
+  }
+
+  if (tourGuideIds.length) {
+    inputData = inputData.filter((tour) =>
+      tour.tourGuides.some((filterItem) => tourGuideIds.includes(filterItem.id))
+    );
+  }
+
+  if (services.length) {
+    inputData = inputData.filter((tour) => tour.services.some((item) => services.includes(item)));
+  }
+
+  return inputData;
+};

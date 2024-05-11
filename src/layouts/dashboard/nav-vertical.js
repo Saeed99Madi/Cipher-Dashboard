@@ -20,11 +20,16 @@ import { NavToggleButton, NavUpgrade } from '../_common';
 
 // ----------------------------------------------------------------------
 
+const styles = {
+  paper: {
+    background: "#584495"
+  }
+}
 export default function NavVertical({ openNav, onCloseNav }) {
   // const { user } = useMockedUser();
-
+  console.log(openNav, "openNav")
   const pathname = usePathname();
-
+ 
   const lgUp = useResponsive('up', 'lg');
 
   const navData = useNavData();
@@ -39,7 +44,8 @@ export default function NavVertical({ openNav, onCloseNav }) {
   const renderContent = (
     <Scrollbar
       sx={{
-        background: '#0C141F',
+        background: '#584495',
+        borderRadius:"0px 40px 40px 0px",
         height: 1,
         '& .simplebar-content': {
           height: 1,
@@ -48,7 +54,7 @@ export default function NavVertical({ openNav, onCloseNav }) {
         },
       }}
     >
-      <Logo openNav={openNav} sx={{ mt: 3, ml: 4, mb: 1 }} />
+      <Logo openNav={openNav}  sx={{ mt: 3, ml: 4, mb: 1 }} />
 
       <NavSectionVertical
         data={navData}
@@ -58,7 +64,6 @@ export default function NavVertical({ openNav, onCloseNav }) {
       />
 
       <Box sx={{ flexGrow: 1 }} />
-
       <NavUpgrade />
     </Scrollbar>
   );
@@ -67,6 +72,8 @@ export default function NavVertical({ openNav, onCloseNav }) {
     <Box
       component="nav"
       sx={{
+        
+        
         flexShrink: { lg: 0 },
         width: { lg: NAV.W_VERTICAL },
       }}
@@ -76,10 +83,11 @@ export default function NavVertical({ openNav, onCloseNav }) {
       {lgUp ? (
         <Stack
           sx={{
+            
             height: 1,
             position: 'fixed',
             width: NAV.W_VERTICAL,
-            borderRight: (theme) => `dashed 1px ${theme.palette.divider}`,
+            borderRight: (theme) => `dashed 1px ${theme.palette.divider}`,  
           }}
         >
           {renderContent}
@@ -89,7 +97,7 @@ export default function NavVertical({ openNav, onCloseNav }) {
           open={openNav}
           onClose={onCloseNav}
           PaperProps={{
-            sx: {
+            sx: {   
               width: NAV.W_VERTICAL,
             },
           }}
