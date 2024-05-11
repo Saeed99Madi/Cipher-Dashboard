@@ -44,7 +44,7 @@ export default function TourItem({ tour, onView, onEdit, onDelete }) {
     id,
     title,
     ServiceIcon,
-    
+    path,
     desc,
     // images,
     // bookers,
@@ -128,7 +128,7 @@ export default function TourItem({ tour, onView, onEdit, onDelete }) {
       primary={
         <Link component={RouterLink} href={
           // paths.dashboard.tour.details(id)
-          paths.dashboard.two
+          paths.dashboard[path]
         } color="inherit">
           {title}
         </Link>

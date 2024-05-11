@@ -9,8 +9,9 @@ import { paths } from 'src/routes/paths';
 import { useRouter } from 'src/routes/hooks';
 //
 import SvgColor from 'src/components/svg-color';
-import TourItem from './tour-item';
 
+// eslint-disable-next-line import/no-named-as-default, import/no-named-as-default-member
+import TourItem from './tour-item';
 // ----------------------------------------------------------------------
 const icon = (name) => (
   <SvgColor src={`/assets/icons/home/${name}.svg`} sx={{ width: 1, height: 1 }} />
@@ -30,17 +31,17 @@ const ICONS = {
   companypolicies: icon('ic_companypolicies'),
 }
 const SercicesList = [
-  {id:1,title: "SSO - integrate with Office 365", ServiceIcon : ICONS.sso, desc:"Card Full Details"},
-  {id:2,title: "Help Desk", ServiceIcon : ICONS.helpdesk, desc:"Card Full Details"},
-  {id:3,title: "Events", ServiceIcon : ICONS.events, desc:"Card Full Details"},
-  {id:4,title: "Company's Policies", ServiceIcon : ICONS.companypolicies, desc:"Card Full Details"},
-  {id:5,title: "Internal HR Requests integration with ERP", ServiceIcon : ICONS.internalhrrequest, desc:"Card Full Details"},
-  {id:6,title: "Products and services", ServiceIcon : ICONS.products, desc:"Card Full Details"},
-  {id:7,title: "Festive Greeting Cards", ServiceIcon : ICONS.fastive, desc:"Card Full Details"},
-  {id:8,title: "Yellow Page", ServiceIcon : ICONS.yellowpage, desc:"Card Full Details"},
-  {id:9,title: "Newsletter", ServiceIcon : ICONS.newslatter, desc:"Card Full Details"},
-  {id:10,title: "Request business Card", ServiceIcon : ICONS.requestbusiness, desc:"Card Full Details"},
-  {id:11,title: "Request Software license", ServiceIcon : ICONS.requestlicense, desc:"Card Full Details"},
+  {id:1, path:"sso", title: "SSO - integrate with Office 365", ServiceIcon : ICONS.sso, desc:"Card Full Details"},
+  {id:6, path:"products", title: "Products and services", ServiceIcon : ICONS.products, desc:"Card Full Details"},
+  {id:7, path:"festive", title: "Festive Greeting Cards", ServiceIcon : ICONS.fastive, desc:"Card Full Details"},
+  {id:3, path:"events", title: "Events", ServiceIcon : ICONS.events, desc:"Card Full Details"},
+  {id:2, path:"help_desk", title: "Help Desk", ServiceIcon : ICONS.helpdesk, desc:"Card Full Details"},
+  {id:4, path:"company_policies", title: "Company's Policies", ServiceIcon : ICONS.companypolicies, desc:"Card Full Details"},
+  {id:9, path:"news_latters", title: "Newsletter", ServiceIcon : ICONS.newslatter, desc:"Card Full Details"},
+  {id:8, path:"yellow_page", title: "Yellow Page", ServiceIcon : ICONS.yellowpage, desc:"Card Full Details"},
+  {id:10, path:"reqs_business", title: "Request business Card", ServiceIcon : ICONS.requestbusiness, desc:"Card Full Details"},
+  {id:5, path:"internal_hr_reqs", title: "Internal HR Requests integration with ERP", ServiceIcon : ICONS.internalhrrequest, desc:"Card Full Details"},
+  {id:11, path:"reqs_software_license", title: "Request Software license", ServiceIcon : ICONS.requestlicense, desc:"Card Full Details"},
 
 ]
 export default function TourList({ tours }) {

@@ -15,7 +15,17 @@ const PageTwo = lazy(() => import('src/pages/dashboard/two'));
 const PageFour = lazy(() => import('src/pages/dashboard/four'));
 const PageFive = lazy(() => import('src/pages/dashboard/five'));
 const PageSix = lazy(() => import('src/pages/dashboard/six'));
-// const PageSeven = lazy(() => import('src/pages/dashboard/seven'));
+const EventsPage = lazy(() => import('src/pages/dashboard/Events'));
+const Sso = lazy(() => import('src/pages/dashboard/Sso'));
+const ProductsAndServices = lazy(() => import('src/pages/dashboard/ProductsAndServices'));
+const HelpDesk = lazy(() => import('src/pages/dashboard/HelpDesk'));
+const InternalHrReqs = lazy(() => import('src/pages/dashboard/InternalHrReqs'));
+const ReqsSoftwareLicense = lazy(() => import('src/pages/dashboard/ReqsSoftwareLicense'));
+const YellowPage = lazy(() => import('src/pages/dashboard/YellowPage'));
+const CompanyPolicies = lazy(() => import('src/pages/dashboard/CompanyPolicies'));
+const Festaive = lazy(() => import('src/pages/dashboard/Festaive'));
+const NewsLatters = lazy(() => import('src/pages/dashboard/NewsLatters'));
+const ReqsBusiness = lazy(() => import('src/pages/dashboard/reqsBusiness'));
 const DetailsPage = lazy(() => import('src/pages/dashboard/DetailsPage'));
 
 // ----------------------------------------------------------------------
@@ -33,6 +43,17 @@ export const dashboardRoutes = [
     children: [
       { element: <PageFour />, index: true },
       { path: 'two', element: <PageTwo /> },
+      { path: 'events', element: <EventsPage /> },
+      { path: 'sso', element: <Sso /> },
+      { path: 'products', element: <ProductsAndServices /> },
+      { path: 'help-desk', element: <HelpDesk /> },
+      { path: 'internal-hr-reqs', element: <InternalHrReqs /> },
+      { path: 'reqs-software-license', element: <ReqsSoftwareLicense /> },
+      { path: 'yellow-page', element: <YellowPage /> },
+      { path: 'company-policies', element: <CompanyPolicies /> },
+      { path: 'festaive', element: <Festaive /> },
+      { path: 'news-latters', element: <NewsLatters /> },
+      { path: 'reqs-business', element: <ReqsBusiness /> },
       // { path: 'three', element: <PageThree /> },
       // { path: 'seven', element: <PageSeven /> },
       { path: 'details/:id', element: <DetailsPage /> },
