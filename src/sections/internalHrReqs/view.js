@@ -60,17 +60,17 @@ const ICONS = {
  
 }
 const SercicesList = [
-  {id:1, path:"sso", title: "Overtime Request", ServiceIcon : ICONS.cancleleave, desc:"Card Full Details"},
-  {id:6, path:"products", title: "Overtime Pay Request", ServiceIcon : ICONS.employmentlatter, desc:"Card Full Details"},
-  {id:7, path:"festive", title: "Travel Request", ServiceIcon : ICONS.fixationsalary, desc:"Card Full Details"},
-  {id:3, path:"events", title: "Leave Permission", ServiceIcon : ICONS.leavepermission, desc:"Card Full Details"},
-  {id:2, path:"help_desk", title: "Work Outside Office Permission", ServiceIcon : ICONS.overtime, desc:"Card Full Details"},
-  {id:2, path:"help_desk", title: "Update My Information", ServiceIcon : ICONS.overtimerequest, desc:"Card Full Details"},
-  {id:4, path:"company_policies", title: "Employment Letter", ServiceIcon : ICONS.training, desc:"Card Full Details"},
-  {id:9, path:"news_latters", title: "Fixation of Salary", ServiceIcon : ICONS.travelrequest, desc:"Card Full Details"},
-  {id:8, path:"yellow_page", title: "Training", ServiceIcon : ICONS.updatemyinfo, desc:"Card Full Details"},
-  {id:10, path:"reqs_business", title: "Cancel Leave Application", ServiceIcon : ICONS.vecationrequest, desc:"Card Full Details"},
-  {id:5, path:"internal_hr_reqs", title: "Vacation Request", ServiceIcon : ICONS.workoutside, desc:"Card Full Details"},
+  {id:1, path:"overtimerequest", title: "Overtime Request", ServiceIcon : ICONS.cancleleave, desc:"Card Full Details"},
+  {id:6, path:"overtimepayrequest", title: "Overtime Pay Request", ServiceIcon : ICONS.employmentlatter, desc:"Card Full Details"},
+  {id:7, path:"travelrequest", title: "Travel Request", ServiceIcon : ICONS.fixationsalary, desc:"Card Full Details"},
+  {id:3, path:"leavepermission", title: "Leave Permission", ServiceIcon : ICONS.leavepermission, desc:"Card Full Details"},
+  {id:2, path:"workoutsideofficepermission", title: "Work Outside Office Permission", ServiceIcon : ICONS.overtime, desc:"Card Full Details"},
+  {id:2, path:"updatemyinformation", title: "Update My Information", ServiceIcon : ICONS.overtimerequest, desc:"Card Full Details"},
+  {id:4, path:"employmentletter", title: "Employment Letter", ServiceIcon : ICONS.training, desc:"Card Full Details"},
+  {id:9, path:"fixationofsalary", title: "Fixation of Salary", ServiceIcon : ICONS.travelrequest, desc:"Card Full Details"},
+  {id:8, path:"training", title: "Training", ServiceIcon : ICONS.updatemyinfo, desc:"Card Full Details"},
+  {id:10, path:"cancelleaveapplication", title: "Cancel Leave Application", ServiceIcon : ICONS.vecationrequest, desc:"Card Full Details"},
+  {id:5, path:"vacationrequest", title: "Vacation Request", ServiceIcon : ICONS.workoutside, desc:"Card Full Details"},
 ]
 
 

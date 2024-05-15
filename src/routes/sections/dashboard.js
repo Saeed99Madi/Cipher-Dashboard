@@ -33,6 +33,18 @@ const NewsLatters = lazy(() => import('src/pages/dashboard/NewsLatters'));
 const ReqsBusiness = lazy(() => import('src/pages/dashboard/reqsBusiness'));
 const DetailsPage = lazy(() => import('src/pages/dashboard/DetailsPage'));
 
+const Overtimerequest = lazy(() => import('src/pages/dashboard/OvertimeRequest'));
+const Overtimepayrequest = lazy(() => import('src/pages/dashboard/OvertimePayRequest'));
+const Travelrequest = lazy(() => import('src/pages/dashboard/TravilRequest'));
+const Leavepermission = lazy(() => import('src/pages/dashboard/LeavePermission'));
+const Workoutsideofficepermission = lazy(() => import('src/pages/dashboard/WorkoutsideofficePermission'));
+const Updatemyinformation = lazy(() => import('src/pages/dashboard/UpdateMyInfo'));
+const Employmentletter = lazy(() => import('src/pages/dashboard/EmploymentLatter'));
+const Fixationofsalary = lazy(() => import('src/pages/dashboard/FixationOfSalary'));
+const Training = lazy(() => import('src/pages/dashboard/Training'));
+const Cancelleaveapplication = lazy(() => import('src/pages/dashboard/CanceleLeaveApplication'));
+const Vacationrequest = lazy(() => import('src/pages/dashboard/VacationRequest'));
+
 // ----------------------------------------------------------------------
 
 export const dashboardRoutes = [
@@ -54,6 +66,8 @@ export const dashboardRoutes = [
       { path: 'services', element: <ServicesPage /> },
       { path: 'todolist', element: <ToDoListPage /> },
       { path: 'events', element: <PageFive /> },
+
+      // Services Pages Start
       { path: 'sso', element: <Sso /> },
       { path: 'products', element: <ProductsAndServices /> },
       { path: 'help-desk', element: <HelpDesk /> },
@@ -61,9 +75,25 @@ export const dashboardRoutes = [
       { path: 'reqs-software-license', element: <ReqsSoftwareLicense /> },
       { path: 'yellow-page', element: <YellowPage /> },
       { path: 'company-policies', element: <CompanyPolicies /> },
-      { path: 'festaive', element: <Festaive /> },
       { path: 'news-latters', element: <NewsLatters /> },
       { path: 'reqs-business', element: <ReqsBusiness /> },
+      { path: 'festaive', element: <Festaive /> },
+      // Services Pages End
+
+      // HR Requests pages Start
+      { path: 'Overtimerequest', element: <Overtimerequest /> },
+      { path: 'Overtimepayrequest', element: <Overtimepayrequest /> },
+      { path: 'Travelrequest', element: <Travelrequest /> },
+      { path: 'Leavepermission', element: <Leavepermission /> },
+      { path: 'Workoutsideofficepermission', element: <Workoutsideofficepermission /> },
+      { path: 'Updatemyinformation', element: <Updatemyinformation /> },
+      { path: 'Employmentletter', element: <Employmentletter /> },
+      { path: 'Fixationofsalary', element: <Fixationofsalary /> },
+      { path: 'Training', element: <Training /> },
+      { path: 'Cancelleaveapplication', element: <Cancelleaveapplication /> },
+      { path: 'Vacationrequest', element: <Vacationrequest /> },
+      // HR Requests pages End
+      
       // { path: 'three', element: <PageThree /> },
       // { path: 'seven', element: <PageSeven /> },
       // { path: 'details/:id', element: <DetailsPage /> },
