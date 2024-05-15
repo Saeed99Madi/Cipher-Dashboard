@@ -24,7 +24,7 @@ export default function ProductCreateView() {
           },
           {
             name: 'HR Internal requests',
-            href: paths.dashboard.root,
+            href: paths.dashboard.internal_hr_reqs,
           },
           { name: 'Overtime Request' },
         ]}
