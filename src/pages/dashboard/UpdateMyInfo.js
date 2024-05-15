@@ -9,7 +9,7 @@ export default function Page() {
   return (
     <>
       <Helmet>
-        <title> Dashboard: Update My Information request</title>
+        <title> Dashboard: Update My Information Request</title>
       </Helmet>
       <Box sx={{
         width: '100%',
