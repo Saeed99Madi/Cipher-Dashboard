@@ -13,7 +13,7 @@ export default function TakeawayComment({comment, Details}) {
       mt: 1
     }}
     >
-      <Avatar src={comment.avatarUrl} alt='name' sx={{ width: 40, height: 40 }}/>
+      {/* <Avatar src={comment.avatarUrl} alt='name' sx={{ width: 40, height: 40 }}/> */}
       <Typography
         sx={{
           borderRadius: '8px',

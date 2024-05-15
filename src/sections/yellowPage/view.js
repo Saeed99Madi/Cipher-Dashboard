@@ -13,7 +13,7 @@ export default function EventsView() {
 
   return (
     <Container maxWidth={settings.themeStretch ? false : 'xl'}>
-      <Typography variant="h4"> Events Page </Typography>
+      <Typography variant="h4"> Wellow Page Page</Typography>
 
       <Box
         sx={{

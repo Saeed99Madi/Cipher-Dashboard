@@ -22,6 +22,7 @@ const ICONS = {
   company: icon('ic_companypolicies'),
   fastive: icon('ic_festive'),
   helpdesk: icon('ic_helpdesk'),
+  internalJobOpening: icon('ic_internaljoboppeining'),
   internalhrrequest: icon('ic_internalhrrequest'),
   newslatter: icon('ic_newslatter'),
   products: icon('ic_products'),
@@ -36,13 +37,13 @@ const SercicesList = [
   {id:7, path:"festive", title: "Festive Greeting Cards", ServiceIcon : ICONS.fastive, desc:"Card Full Details"},
   {id:3, path:"events", title: "Events", ServiceIcon : ICONS.events, desc:"Card Full Details"},
   {id:2, path:"help_desk", title: "Help Desk", ServiceIcon : ICONS.helpdesk, desc:"Card Full Details"},
+  {id:2, path:"help_desk", title: "internal Job Opening", ServiceIcon : ICONS.internalJobOpening, desc:"Card Full Details"},
   {id:4, path:"company_policies", title: "Company's Policies", ServiceIcon : ICONS.companypolicies, desc:"Card Full Details"},
   {id:9, path:"news_latters", title: "Newsletter", ServiceIcon : ICONS.newslatter, desc:"Card Full Details"},
   {id:8, path:"yellow_page", title: "Yellow Page", ServiceIcon : ICONS.yellowpage, desc:"Card Full Details"},
   {id:10, path:"reqs_business", title: "Request business Card", ServiceIcon : ICONS.requestbusiness, desc:"Card Full Details"},
   {id:5, path:"internal_hr_reqs", title: "Internal HR Requests integration with ERP", ServiceIcon : ICONS.internalhrrequest, desc:"Card Full Details"},
   {id:11, path:"reqs_software_license", title: "Request Software license", ServiceIcon : ICONS.requestlicense, desc:"Card Full Details"},
-
 ]
 export default function TourList({ tours }) {
   const router = useRouter();
@@ -76,7 +77,7 @@ export default function TourList({ tours }) {
           md: 'repeat(3, 1fr)',
         }}
       >
-        {SercicesList.map((tour) => (
+        {tours.map((tour) => (
           <TourItem
             key={tour.id}
             tour={tour}

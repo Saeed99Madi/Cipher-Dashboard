@@ -77,13 +77,12 @@ export function useNavData() {
         subheader: '  ',
         items: [
           {
-            textColor: '#FFFFFF',
+            // textColor: '#FFFFFF',
             itemAction: 'create_project',
-            title: 'Over View',
+            title: 'Overview',
             path: paths.dashboard.root,
             icon: ICONS.overview,
-          },
-          
+          }, 
           {
             title: 'To-do-list',
             // children: [
@@ -93,32 +92,32 @@ export function useNavData() {
             //     takeawaysLength: _mockTakeaways.length 
             //   },
             // ],
-            path: paths.dashboard.two,
-            textColor:"#FFFFFF",
+            path: paths.dashboard.todolist,
+            // textColor:"#FFFFFF",
             icon: ICONS.to,
           },
           {
             title: 'inpox',
-            path: paths.dashboard.two,
-             textColor:"#FFFFFF",
+            path: paths.dashboard.inbox,
+            // textColor:"#FFFFFF",
             icon: ICONS.inbox,
           },
           {
             title: 'Services',
-            path: paths.dashboard.two,
-             textColor:"#FFFFFF",
+            path: paths.dashboard.services,
+            // textColor:"#FFFFFF",
             icon: ICONS.services,
           },
           {
             title: 'Account',
-            path: paths.dashboard.two,
-             textColor:"#FFFFFF",
+            path: paths.dashboard.account,
+            // textColor:"#FFFFFF",
             icon: ICONS.account,
           },
           {
             title: 'Departments',
-            path: paths.dashboard.two,
-             textColor:"#FFFFFF",
+            path: paths.dashboard.department,
+            // textColor:"#FFFFFF",
             icon: ICONS.department,
           },
           // {

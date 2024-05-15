@@ -22,21 +22,8 @@ import { StyledIcon } from 'src/components/nav-section/vertical/styles';
 import SvgColor from 'src/components/svg-color';
 
 // ----------------------------------------------------------------------
-const icon = (name) => (
-  <SvgColor src={`/assets/icons/home/${name}.svg`} sx={{ width: 1, height: 1 }} />
-);
-const ICONS = {
-  events: icon('ic_events'),
-  company: icon('ic_companypolicies'),
-  fastive: icon('ic_festive'),
-  helpdesk: icon('ic_helpdesk'),
-  internalhrrequest: icon('ic_internalhrrequest'),
-  newslatter: icon('ic_newslatter'),
-  products: icon('ic_products'),
-  requestbusiness: icon('ic_requestbusiness'),
-  requestlicense: icon('ic_requestlicense'),
-  yellowpage: icon('ic_yellowpage'),
-}
+
+
 export default function TourItem({ tour, onView, onEdit, onDelete }) {
   const popover = usePopover();
 

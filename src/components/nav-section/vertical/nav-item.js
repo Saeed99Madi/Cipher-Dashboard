@@ -59,7 +59,7 @@ export default function NavItem({ item, open, depth, active, config, externalLin
             noWrap: true,
             component: 'span',
             typography: 'caption',
-            color: `${textColor || 'text.disabled'}`,
+            color: `${textColor || 'text.secondarynav'}`,
           }}
         />
       )}

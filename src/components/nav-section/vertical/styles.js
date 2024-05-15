@@ -15,17 +15,24 @@ export const StyledItem = styled(ListItemButton, {
 
   const activeStyles = {
     root: {
-      color: Sub ? '#6EA9EE' : '#fff',
-
+      color: Sub ? '#6EA9EE' : '#574394',
+      // backgroundColor: alpha('#fff', 0.16),
+      backgroundColor: "#FFFFFF",
+      fontWeight:900,
       '&:hover': {
-        backgroundColor: alpha('#6EA9EE', 0.16),
+        // backgroundColor: alpha('#6EA9EE', 0.16),
+        backgroundColor: "#FFFFFF",
+        color: Sub ? '#6EA9EE' : '#574394',
       },
     },
     sub: {
-      color: theme.palette.text.primary,
+      // color: theme.palette.text.primary,
+      color: "#574394",
+      fontWeight:900,
       backgroundColor: 'transparent',
       '&:hover': {
         backgroundColor: theme.palette.action.hover,
+        
       },
     },
   };
@@ -37,7 +44,7 @@ export const StyledItem = styled(ListItemButton, {
     marginBottom: config.itemGap,
     borderRadius: config.itemRadius,
     minHeight: config.itemRootHeight,
-    color: isOpen ? '#fff' : theme.palette.text.secondary,
+    color: isOpen ? '#fff' : theme.palette.text.secondarycipher,
 
     // ...(Sub && {
     //   display: 'flex',

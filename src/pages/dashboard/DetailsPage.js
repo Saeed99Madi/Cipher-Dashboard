@@ -1,6 +1,6 @@
 import { Box } from '@mui/material';
 import { Helmet } from 'react-helmet-async';
-import DetailsView from 'src/sections/Details/view/view';
+import DetailsView from 'src/sections/details/view/view';
 
 export default function DetailsPage() {
   return (
@@ -9,7 +9,7 @@ export default function DetailsPage() {
         <title> Dashboard: details</title>
       </Helmet>
       <Box sx={{
-        width: '102.4%',
+        width: '100%',
         height: '1px',
         backgroundColor: '#D6D8E1',
         m: '-.5em 0em 1.7em -.9em',

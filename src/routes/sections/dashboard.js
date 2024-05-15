@@ -15,6 +15,11 @@ const PageTwo = lazy(() => import('src/pages/dashboard/two'));
 const PageFour = lazy(() => import('src/pages/dashboard/four'));
 const PageFive = lazy(() => import('src/pages/dashboard/five'));
 const PageSix = lazy(() => import('src/pages/dashboard/six'));
+const AccountPage = lazy(() => import('src/pages/dashboard/Account'));
+const DepartmentPage = lazy(() => import('src/pages/dashboard/Department'));
+const InboxPage = lazy(() => import('src/pages/dashboard/Inbox'));
+const ServicesPage = lazy(() => import('src/pages/dashboard/Services'));
+const ToDoListPage = lazy(() => import('src/pages/dashboard/ToDoList'));
 const EventsPage = lazy(() => import('src/pages/dashboard/Events'));
 const Sso = lazy(() => import('src/pages/dashboard/Sso'));
 const ProductsAndServices = lazy(() => import('src/pages/dashboard/ProductsAndServices'));
@@ -43,7 +48,12 @@ export const dashboardRoutes = [
     children: [
       { element: <PageFour />, index: true },
       { path: 'two', element: <PageTwo /> },
-      { path: 'events', element: <EventsPage /> },
+      { path: 'account', element: <AccountPage /> },
+      { path: 'department', element: <DepartmentPage /> },
+      { path: 'inbox', element: <InboxPage /> },
+      { path: 'services', element: <ServicesPage /> },
+      { path: 'todolist', element: <ToDoListPage /> },
+      { path: 'events', element: <PageFive /> },
       { path: 'sso', element: <Sso /> },
       { path: 'products', element: <ProductsAndServices /> },
       { path: 'help-desk', element: <HelpDesk /> },
@@ -56,7 +66,7 @@ export const dashboardRoutes = [
       { path: 'reqs-business', element: <ReqsBusiness /> },
       // { path: 'three', element: <PageThree /> },
       // { path: 'seven', element: <PageSeven /> },
-      { path: 'details/:id', element: <DetailsPage /> },
+      // { path: 'details/:id', element: <DetailsPage /> },
       {
         path: 'group',
         children: [

@@ -29,11 +29,11 @@ export default function Takeaway({takeaway}) {
     position: 'relative',
   }}
   >
-  <Box sx={{ml: -.7}}>
+  {/* <Box sx={{ml: -.7}}>
     {takeaway.Tags.length > 0 && takeaway.Tags.map((tag) => (
       <TakeawaysTag key={tag} tag={tag} />
     ))}
-  </Box>
+  </Box> */}
   <Typography sx={{
     fontWeight: '500'
   }}>{takeaway.description}</Typography>
@@ -44,14 +44,14 @@ export default function Takeaway({takeaway}) {
     width: '100%',
     gap: 1
   }}>
-      <Avatar src={takeaway.Author.avatarUrl} alt={takeaway.Author.name} sx={{ width: 32, height: 32 }}/>
-      <Typography>{takeaway.Author.name}</Typography>
+      {/* <Avatar src={takeaway.Author.avatarUrl} alt={takeaway.Author.name} sx={{ width: 32, height: 32 }}/> */}
+      {/* <Typography>{takeaway.Author.name}</Typography> */}
       <Box
         // onClick={onViewRow}
         sx={{
           cursor: 'pointer',
           '&:hover': {
-            textDecoration: 'underline',
+            // textDecoration: 'underline',
           },
           display: 'flex',
           alignItems: 'center',
@@ -60,88 +60,14 @@ export default function Takeaway({takeaway}) {
           opacity: .6,
         }}
       >
-      {takeaway.Report.icon}
+      {/* {takeaway.Report.icon} */}
       {takeaway.Report.Report}
-      <Typography sx={{mb: 1.3, fontSize: '20px'}}>.</Typography>
-      <Typography>{takeaway.Report.time}</Typography> 
+      {/* <Typography sx={{mb: 1.3, fontSize: '20px'}}>.</Typography> */}
+      {/* <Typography>{takeaway.Report.time}</Typography>  */}
     </Box>
   </Box>
-  <Box sx={{
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-    width: '100%',
-    gap: .5
-  }}>
-    <Button
-    sx={{
-      color: '#fff',
-      backgroundColor: !clicked ? '#1A2638' : '#2292F9',
-      fontSize: '14px',
-      borderRadius: '50px',
-      gap: 0.3,
-      padding: '.4em 1.2em',
-      minWidth: '8.5em',
-      border: '1px solid',
-      borderColor: !clicked ? '#1A2638' : '#2292F9',
-      '&:hover': {
-        backgroundColor: !clicked ? '#1A2638' : '#2292F9',
-      },
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-    }}
-    onClick={() => {
-      setClicked(!clicked)
-    }}
-    >
-      {vote}
-      <Typography sx={{fontSize: '14px'}} >{!clicked ? takeaway.vote.number : takeaway.vote.number + 1}</Typography>
-      <Typography sx={{fontSize: '14px'}}>{!clicked ? 'upvote' : 'Voted'}</Typography>
-    </Button>
 
-    <Button
-    sx={{
-      color: '#586474',
-      backgroundColor: 'transparent',
-      fontSize: '14px',
-      borderRadius: '50px',
-      padding: '.3em 1em',
-      ml: 1,
-      gap: .8,
-      fontWeight: 'bold',
-      border: '1px solid #586474',
-      // display: 'flex',
-      // alignItems: 'center',
-      // justifyContent: 'center',
-      '&:hover': {
-        backgroundColor: '#1a263808'
-      }
-    }}
-    onClick={() => setShowComments(!showComments)}
-    >
-      {comment}
-      <Typography>comments</Typography>
-    </Button>
-  </Box>
-    {takeaway.comments.length > 1 ? 
-    <Typography sx={{opacity: .6, fontSize: '13px'}}>
-      View {takeaway.comments.length} previous comments
-    </Typography> :
-    <Typography sx={{opacity: .6, fontSize: '13px'}}>
-      {takeaway.comments.length} comments
-    </Typography>}
-
-    {showComments && takeaway.comments.length > 1 &&
-      takeaway.comments.slice(0, takeaway.comments.length - 1).map((item) => (
-        <TakeawayComment key={item.id} comment={item} />
-      ))
-
-    }
-
-    {takeaway.comments.length > 0 &&
-      <TakeawayComment key={takeaway.id} comment={takeaway.comments[takeaway.comments.length - 1]} />}
-    <MoreHorizIcon
+    {/* <MoreHorizIcon
         sx={{
           position: 'absolute',
           right: '.5em',
@@ -149,7 +75,8 @@ export default function Takeaway({takeaway}) {
           fontWeight: 'bold',
           cursor: 'pointer',
         }}
-    />
+    /> */}
+
     <TakeawaysLabel label={takeaway.label}/>
   </Card>
   )

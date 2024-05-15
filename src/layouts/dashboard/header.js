@@ -28,6 +28,8 @@ import { useSettingsContext } from 'src/components/settings';
 import { useEffect, useState } from 'react';
 import { _orders } from 'src/_mock/_order';
 import { _mockDetails } from 'src/_mock/-mockDetails';
+import { ColorPreview } from 'src/components/color-utils';
+import { fDateTime } from 'src/utils/format-time';
 import { AccountPopover,
   // NotificationsPopover
 } from '../_common';
@@ -35,7 +37,7 @@ import { HEADER, NAV } from '../config-layout';
 import { useHeaderData } from './config-navigation';
 
 // ----------------------------------------------------------------------
-
+const date = "Fri May 10 2024 11:39:55 GMT+0300 (Eastern European Summer Time)"
 export default function Header({ onOpenNav }) {
   const [tableData] = useState(_orders);
   const {id} = useParams()
@@ -108,7 +110,7 @@ export default function Header({ onOpenNav }) {
           ml: 2,
         }}  
       >
-        <Typography sx={{mr: 2.5, fontSize: '17.2px', fontWeight: 600}}>Cipher Employees Internal Portal</Typography>
+        <Typography sx={{mr: 2.5, fontSize: '16px', fontWeight: 700, color: 'text.disabled'}}>Cipher Employees Internal Portal</Typography>
         {/* {tableData.slice(0, 5).map((item) => (
           <Avatar
             sx={{
@@ -166,6 +168,13 @@ export default function Header({ onOpenNav }) {
         {/* <NotificationsPopover notificationIcon={headerData[0].notification} /> */}
         <AccountPopover />
         <Typography sx={{mr: 2.5, fontSize: '17.2px', fontWeight: 600}}>Hi, Mohammed</Typography>
+        {/* <Typography variant="caption" sx={{ color: 'text.disabled' }}>
+          {fDateTime(time)}
+        </Typography> */}
+        <ColorPreview limit={1} colors={['#00AFA5']} />
+        <Typography variant="caption" sx={{ color: '#00AFA5' }}>
+          last login in {fDateTime(date)}
+        </Typography>
       </Stack>
     </>
   );
@@ -207,6 +216,7 @@ export default function Header({ onOpenNav }) {
       >
         {renderContent}
       </Toolbar>
+     
     </AppBar>
   );
 }
