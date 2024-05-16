@@ -8,16 +8,23 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 // assets
-import { UploadIllustration } from 'src/assets/illustrations';
+// import { UploadIllustration } from 'src/assets/illustrations';
 //
 import Iconify from '../iconify';
 //
 import RejectionFiles from './errors-rejection-files';
 import MultiFilePreview from './preview-multi-file';
 import SingleFilePreview from './preview-single-file';
+import { StyledIcon } from '../nav-section/vertical/styles';
+import SvgColor from '../svg-color';
 
 // ----------------------------------------------------------------------
-
+const icon = (name) => (
+  <SvgColor src={`/assets/icons/files/${name}.svg`} sx={{ width: 1, height: 1 }} />
+);
+const ICONS = {
+  upload: icon('ic_UploadFile'),
+}
 export default function Upload({
   disabled,
   multiple = false,
@@ -48,13 +55,23 @@ export default function Upload({
   const hasError = isDragReject || !!error;
 
   const renderPlaceholder = (
-    <Stack spacing={3} alignItems="center" justifyContent="center" flexWrap="wrap">
-      <UploadIllustration sx={{ width: 1, maxWidth: 200 }} />
+    <Box
+              columnGap={2}
+              rowGap={3}
+              display="grid"
+              gridTemplateColumns={{
+                xs: 'repeat(1, 1fr)',
+                md: 'repeat(2, 1fr)',
+              }}
+            >
+
+    <Stack spacing={3} alignItems="start" justifyContent="center" flexWrap="wrap">
+      {/* <UploadIllustration sx={{ width: 1, maxWidth: 200 }} /> */}
       <Stack spacing={1} sx={{ textAlign: 'center' }}>
-        <Typography variant="h6">Drop or Select file</Typography>
-        <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-          Drop files here or click
-          <Box
+        <Typography sx={{ textAlign:"left" }}  variant="body2">Passport</Typography>
+        <Typography variant="caption" sx={{ color: 'text.main', textAlign:"left" }} >
+        File Extensions:
+          {/* <Box
             component="span"
             sx={{
               mx: 0.5,
@@ -63,11 +80,16 @@ export default function Upload({
             }}
           >
             browse
-          </Box>
-          thorough your machine
+          </Box> */}
+          <span style={{color: '#8D9096'}}> Pdf, Png, Jpeg, Jpg</span>
         </Typography>
       </Stack>
     </Stack>
+    <Stack spacing={3} alignItems="end" justifyContent="start" flexWrap="wrap">
+
+    <StyledIcon sx={{color:"#574394", textAlign:"right"}} size={20}>{ICONS.upload}</StyledIcon>
+    </Stack>
+    </Box>
   );
 
   const renderSinglePreview = (
@@ -126,7 +148,7 @@ export default function Upload({
       <Box
         {...getRootProps()}
         sx={{
-          p: 5,
+          p: 1,
           outline: 'none',
           borderRadius: 1,
           cursor: 'pointer',

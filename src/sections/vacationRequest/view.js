@@ -1,30 +1,39 @@
 // @mui
-import { alpha } from '@mui/material/styles';
-import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
-import Typography from '@mui/material/Typography';
+// routes
+import { paths } from 'src/routes/paths';
 // components
 import { useSettingsContext } from 'src/components/settings';
+import CustomBreadcrumbs from 'src/components/custom-breadcrumbs';
+//
+import ProductNewEditForm from './overtime-new-edit-form';
 
 // ----------------------------------------------------------------------
 
-export default function EventsView() {
+export default function ProductCreateView() {
   const settings = useSettingsContext();
 
   return (
-    <Container maxWidth={settings.themeStretch ? false : 'xl'}>
-      <Typography variant="h4"> Vacation request Page</Typography>
-
-      <Box
+    <Container maxWidth={settings.themeStretch ? false : 'lg'}>
+      <CustomBreadcrumbs
+        heading="Vacation Request"
+        links={[
+          {
+            name: 'Dashboard',
+            href: paths.dashboard.root,
+          },
+          {
+            name: 'HR Internal requests',
+            href: paths.dashboard.internal_hr_reqs,
+          },
+          { name: 'Vacation Request' },
+        ]}
         sx={{
-          mt: 5,
-          width: 1,
-          height: 320,
-          borderRadius: 2,
-          bgcolor: (theme) => alpha(theme.palette.grey[500], 0.04),
-          border: (theme) => `dashed 1px ${theme.palette.divider}`,
+          mb: { xs: 3, md: 5 },
         }}
       />
+
+      <ProductNewEditForm />
     </Container>
   );
 }
