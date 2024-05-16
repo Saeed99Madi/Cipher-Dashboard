@@ -25,12 +25,66 @@ import { useResponsive } from 'src/hooks/use-responsive';
 import { useSnackbar } from 'src/components/snackbar';
 import { useRouter } from 'src/routes/hooks';
 import FormProvider, {
+  RHFAutocomplete,
   // RHFEditor,
   // RHFUpload,
   RHFTextField,
 } from 'src/components/hook-form';
+import { Chip } from '@mui/material';
 
 // ----------------------------------------------------------------------
+const companyDepartments = [
+  "Human Resources",
+  "Finance",
+  "Marketing",
+  "Sales",
+  "Customer Service",
+  "Information Technology",
+  "Research and Development",
+  "Operations",
+  "Legal",
+  "Public Relations",
+  "Supply Chain Management",
+  "Quality Assurance",
+  "Administration",
+  "Product Management",
+  "Business Development",
+  "Accounting",
+  "Engineering",
+  "Design",
+  "Training and Development",
+  "Security",
+  "Purchasing",
+  "Logistics",
+  "Compliance",
+  "Risk Management"
+];
+const companyProjects = [
+  "New Product Development",
+  "Market Research",
+  "Brand Identity Redesign",
+  "Sales Expansion into New Markets",
+  "Customer Satisfaction Improvement Initiative",
+  "Website Redesign",
+  "Software Development",
+  "Supply Chain Optimization",
+  "Cost Reduction Program",
+  "Employee Training and Development",
+  "Corporate Social Responsibility Campaign",
+  "Quality Control Enhancement",
+  "Merger or Acquisition Integration",
+  "Strategic Partnership Development",
+  "Process Automation",
+  "Digital Marketing Campaign",
+  "Infrastructure Upgradation",
+  "Sustainability Initiative",
+  "Product Launch Event Planning",
+  "Customer Relationship Management (CRM) Implementation",
+  "Data Analytics and Business Intelligence Project",
+  "Employee Wellness Program",
+  "Facilities Expansion or Renovation",
+  "Regulatory Compliance Project"
+];
 
 export default function ProductNewEditForm({ currentProduct }) {
   const router = useRouter();
@@ -146,16 +200,43 @@ export default function ProductNewEditForm({ currentProduct }) {
                 md: 'repeat(2, 1fr)',
               }}
             >
+                <Stack spacing={1.5}>
+                  <Typography variant="subtitle2">Employee ID</Typography>
+                  <RHFTextField name="name" type="number" />
+                </Stack>
                <Stack spacing={1.5}>
                   <Typography variant="subtitle2">Employee Name</Typography>
                   <RHFTextField name="name" placeholder="Mohammed Abdallah" />
                 </Stack>
-                <Stack spacing={1.5}>
-                  <Typography variant="subtitle2">Employee Number</Typography>
-                  <RHFTextField name="name" type="number" />
-                </Stack>
             </Box>
-
+            <Stack spacing={1.5}>
+              <Typography variant="subtitle2">Department</Typography>
+              <RHFAutocomplete
+                name="department"
+                placeholder="Choose from the list"
+                
+                disableCloseOnSelect
+                options={companyDepartments.map((option) => option)}
+                getOptionLabel={(option) => option}
+                renderOption={(props, option) => (
+                  <li {...props} key={option}>
+                    {option}
+                  </li>
+                )}
+                renderTags={(selected, getTagProps) =>
+                  selected.map((option, index) => (
+                    <Chip
+                      {...getTagProps({ index })}
+                      key={option}
+                      label={option}
+                      size="small"
+                      color="info"
+                      variant="soft"
+                    />
+                  ))
+                }
+              />
+            </Stack>
             <Box
               columnGap={2}
               rowGap={3}
@@ -166,7 +247,7 @@ export default function ProductNewEditForm({ currentProduct }) {
               }}
             >
                 <Stack spacing={1.5}>
-              <Typography variant="subtitle2">Date</Typography>
+              <Typography variant="subtitle2">Start Date</Typography>
               <Controller
                 name="expiredDate"
                 control={control}
@@ -185,6 +266,31 @@ export default function ProductNewEditForm({ currentProduct }) {
                 )}
               />
             </Stack>
+            <Stack spacing={1.5}>
+              <Typography variant="subtitle2">End Date</Typography>
+              <Controller
+                name="expiredDate"
+                control={control}
+                render={({ field, fieldState: { error } }) => (
+                  <DatePicker
+                    {...field}
+                    format="dd/MM/yyyy"
+                    slotProps={{
+                      textField: {
+                        fullWidth: true,
+                        error: !!error,
+                        helperText: error?.message,
+                      },
+                    }}
+                  />
+                )}
+              />
+            </Stack>
+         
+            
+            </Box>
+
+
             <Box
               columnGap={2}
               rowGap={3}
@@ -217,7 +323,7 @@ export default function ProductNewEditForm({ currentProduct }) {
                 />
               </Stack>
               <Stack spacing={1.5}>
-                <Typography variant="subtitle2">End Time</Typography>
+                <Typography variant="subtitle2">End at</Typography>
                 <Controller
                   name="expiredDate"
                   control={control}
@@ -238,8 +344,8 @@ export default function ProductNewEditForm({ currentProduct }) {
                 />
               </Stack>
             </Box>
-            
-            </Box>
+
+
             <Box
               columnGap={2}
               rowGap={3}
@@ -249,11 +355,43 @@ export default function ProductNewEditForm({ currentProduct }) {
                 md: 'repeat(2, 1fr)',
               }}
             >
-               <Stack spacing={1.5}>
-                  <Typography variant="subtitle2">Total Hours</Typography>
+                <Stack spacing={1.5}>
+              <Typography variant="subtitle2">Select Project</Typography>
+              <RHFAutocomplete
+                name="companyProjects"
+                placeholder="Choose from the list"
+                
+                disableCloseOnSelect
+                options={companyProjects.map((option) => option)}
+                getOptionLabel={(option) => option}
+                renderOption={(props, option) => (
+                  <li {...props} key={option}>
+                    {option}
+                  </li>
+                )}
+                renderTags={(selected, getTagProps) =>
+                  selected.map((option, index) => (
+                    <Chip
+                      {...getTagProps({ index })}
+                      key={option}
+                      label={option}
+                      size="small"
+                      color="info"
+                      variant="soft"
+                    />
+                  ))
+                }
+              />
+            </Stack>
+
+            <Stack spacing={1.5}>
+                  <Typography variant="subtitle2">Customer name</Typography>
                   <RHFTextField name="name" type="number" />
                 </Stack>
+
+
             </Box>
+
          
 
 
