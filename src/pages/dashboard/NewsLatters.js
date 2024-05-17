@@ -1,7 +1,7 @@
 import { Box } from '@mui/material';
 import { Helmet } from 'react-helmet-async';
 // sections
-import NewsLatterView from 'src/sections/newsLatters/view';
+import NewsLatterView from 'src/sections/newsLatters/view/view';
 
 // ----------------------------------------------------------------------
 
