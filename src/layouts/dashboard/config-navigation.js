@@ -160,12 +160,12 @@ export function useNavSettings() {
         items: [
           {
             title: 'Account settings',
-            path: paths.dashboard.group.six,
+            path: paths.dashboard.root,
             icon: ICONS.settings,
           },
           {
             title: 'Log Out',
-            path: paths.dashboard.group.six,
+            path: paths.dashboard.root,
             icon: ICONS.logout,
           },
           // { title: 'Support', path: paths.dashboard.seven, icon: ICONS.support },

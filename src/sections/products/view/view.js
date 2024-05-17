@@ -25,11 +25,11 @@ import CustomBreadcrumbs from 'src/components/custom-breadcrumbs';
 // import TourSearch from '../four/tour-search';
 //
 import SvgColor from 'src/components/svg-color';
-import TourList from '../four/tour-list';
-import TourSort from '../four/tour-sort';
-import TourSearch from '../four/tour-search';
-import TourFilters from '../four/tour-filters';
-import TourFiltersResult from '../four/tour-filters-result';
+import TourList from '../../four/tour-list';
+import TourSort from '../../four/tour-sort';
+import TourSearch from '../../four/tour-search';
+import TourFilters from '../../four/tour-filters';
+import TourFiltersResult from '../../four/tour-filters-result';
 
 // ----------------------------------------------------------------------
 
@@ -54,10 +54,10 @@ const ICONS = {
  
 }
 const SercicesList = [
-  {id:1, path:"overtimerequest", title: "Advisory", ServiceIcon : ICONS.advisory, desc:"Card Full Details"},
-  {id:2, path:"overtimepayrequest", title: "Cipher Innovation", ServiceIcon : ICONS.cipherInnovation, desc:"Card Full Details"},
-  {id:3, path:"travelrequest", title: "Cyber Threat Intelligence", ServiceIcon : ICONS.cyberThreatIntelligence, desc:"Card Full Details"},
-  {id:4, path:"leavepermission", title: "Smart SOC", ServiceIcon : ICONS.smartSOC, desc:"Card Full Details"}
+  {id:1, idPath:0 , title: "Advisory", ServiceIcon : ICONS.advisory, desc:"Card Full Details"},
+  {id:2, idPath:1 , title: "Cipher Innovation", ServiceIcon : ICONS.cipherInnovation, desc:"Card Full Details"},
+  {id:3, idPath:2 , title: "Cyber Threat Intelligence", ServiceIcon : ICONS.cyberThreatIntelligence, desc:"Card Full Details"},
+  {id:4, idPath:3 , title: "Smart SOC", ServiceIcon : ICONS.smartSOC, desc:"Card Full Details"}
 ]
 
 
@@ -195,16 +195,7 @@ export default function TourListView() {
           },
           { name: 'Company Products' },
         ]}
-        // action={
-        //   <Button
-        //     component={RouterLink}
-        //     href={paths.dashboard.two}
-        //     variant="contained"
-        //     startIcon={<Iconify icon="mingcute:add-line" />}
-        //   >
-        //     New Tour
-        //   </Button>
-        // }
+       
         sx={{
           mb: { xs: 3, md: 5 },
         }}

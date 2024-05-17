@@ -1,7 +1,7 @@
 import { Box } from '@mui/material';
 import { Helmet } from 'react-helmet-async';
 // sections
-import YellowPage from 'src/sections/yellowPage/view';
+import YellowPage from 'src/sections/yellowPage/view/view';
 
 // ----------------------------------------------------------------------
 

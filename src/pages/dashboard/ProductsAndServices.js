@@ -1,7 +1,7 @@
 import { Box } from '@mui/material';
 import { Helmet } from 'react-helmet-async';
 // sections
-import ProductsAndServicesView from 'src/sections/products/view';
+import ProductsAndServicesView from 'src/sections/products/view/view';
 
 // ----------------------------------------------------------------------
 

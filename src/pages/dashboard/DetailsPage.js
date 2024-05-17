@@ -1,6 +1,6 @@
 import { Box } from '@mui/material';
 import { Helmet } from 'react-helmet-async';
-import DetailsView from 'src/sections/details/view/view';
+import DetailsView from 'src/sections/products/view/productDetails';
 
 export default function DetailsPage() {
   return (

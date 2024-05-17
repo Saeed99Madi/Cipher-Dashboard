@@ -69,7 +69,7 @@ export const dashboardRoutes = [
 
       // Services Pages Start
       { path: 'sso', element: <Sso /> },
-      { path: 'products', element: <ProductsAndServices /> },
+      // { path: 'products', element: <ProductsAndServices /> },
       { path: 'help-desk', element: <HelpDesk /> },
       { path: 'internal-hr-reqs', element: <InternalHrReqs /> },
       { path: 'reqs-software-license', element: <ReqsSoftwareLicense /> },
@@ -92,18 +92,20 @@ export const dashboardRoutes = [
       { path: 'Training', element: <Training /> },
       { path: 'Cancelleaveapplication', element: <Cancelleaveapplication /> },
       { path: 'Vacationrequest', element: <Vacationrequest /> },
+      { path: 'details/:id', element: <DetailsPage /> },
       // HR Requests pages End
       
       // { path: 'three', element: <PageThree /> },
       // { path: 'seven', element: <PageSeven /> },
-      // { path: 'details/:id', element: <DetailsPage /> },
+      
       {
-        path: 'group',
-        children: [
-          // { element: <PageFour />, index: true },
-          { path: 'five', element: <PageFive /> },
-          { path: 'six', element: <PageSix /> },
-        ],
+        path: 'products',
+        element: <ProductsAndServices />,
+        // children: [
+        //   // { element: <PageFour />, index: true },
+        //   //  { element: <ProductsAndServices /> },
+        //    { path: 'details/:id', element: <DetailsPage /> },
+        // ],
       },
     ],
   },

@@ -45,10 +45,10 @@ export const paths = {
     vacationrequest: `${ROOTS.DASHBOARD}/vacationrequest`,
     // HR Requests Pages End 
     details: (id) => `${ROOTS.DASHBOARD}/details/${id}`,
-    group: {
-      root: `${ROOTS.DASHBOARD}/group`,
-      five: `${ROOTS.DASHBOARD}/group/five`,
-      six: `${ROOTS.DASHBOARD}/group/six`,
-    },
+    // products: {
+    //   root: `${ROOTS.DASHBOARD}/products`,
+    //   details: (id) => `${ROOTS.DASHBOARD}/details/${id}`,
+     
+    // },
   },
 };

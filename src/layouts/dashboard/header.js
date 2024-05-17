@@ -79,7 +79,7 @@ export default function Header({ onOpenNav }) {
         </IconButton>
       )}
 
-      {isDetails ? 
+      {/* {isDetails ? 
       <Box
         sx={{
           display: 'flex',
@@ -101,7 +101,7 @@ export default function Header({ onOpenNav }) {
           {details.Published ? 'Published' : 'Draft'}
         </Typography>
         <Typography variant='h6' >{details.title}</Typography>
-      </Box> :  
+      </Box> :   */}
       <Box 
         sx={{
           display: 'flex',
@@ -141,7 +141,8 @@ export default function Header({ onOpenNav }) {
         >
           <HiPlus style={{color: '#2292f9'}}/>
         </Box> */}
-      </Box>}
+      </Box>
+      {/* } */}
 
       <Stack
         flexGrow={1}

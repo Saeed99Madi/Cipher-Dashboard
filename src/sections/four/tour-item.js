@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 import PropTypes from 'prop-types';
 // @mui
 import Box from '@mui/material/Box';
@@ -5,21 +6,21 @@ import Link from '@mui/material/Link';
 import Card from '@mui/material/Card';
 import Stack from '@mui/material/Stack';
 import MenuItem from '@mui/material/MenuItem';
-import IconButton from '@mui/material/IconButton';
+// import IconButton from '@mui/material/IconButton';
 import ListItemText from '@mui/material/ListItemText';
 // routes
 import { paths } from 'src/routes/paths';
 import { RouterLink } from 'src/routes/components';
 // utils
-import { fDateTime } from 'src/utils/format-time';
-import { fCurrency } from 'src/utils/format-number';
+// import { fDateTime } from 'src/utils/format-time';
+// import { fCurrency } from 'src/utils/format-number';
 // components
-import Image from 'src/components/image';
+// import Image from 'src/components/image';
 import Iconify from 'src/components/iconify';
 import CustomPopover, { usePopover } from 'src/components/custom-popover';
-import { shortDateLabel } from 'src/components/custom-date-range-picker';
+// import { shortDateLabel } from 'src/components/custom-date-range-picker';
 import { StyledIcon } from 'src/components/nav-section/vertical/styles';
-import SvgColor from 'src/components/svg-color';
+// import SvgColor from 'src/components/svg-color';
 
 // ----------------------------------------------------------------------
 
@@ -33,6 +34,7 @@ export default function TourItem({ tour, onView, onEdit, onDelete }) {
     ServiceIcon,
     path,
     desc,
+    idPath,
     // images,
     // bookers,
     // createdAt,
@@ -41,52 +43,53 @@ export default function TourItem({ tour, onView, onEdit, onDelete }) {
     // destination,
    
   } = tour;
+  
 
   // const shortLabel = shortDateLabel(available.startDate, available.endDate);
 
-  const renderRating = (
-    <Stack
-      direction="row"
-      alignItems="center"
-      sx={{
-        top: 8,
-        right: 8,
-        zIndex: 9,
-        borderRadius: 1,
-        position: 'absolute',
-        p: '2px 6px 2px 4px',
-        typography: 'subtitle2',
-        bgcolor: 'warning.lighter',
-      }}
-    >
-      {/* <Iconify icon="eva:star-fill" sx={{ color: 'warning.main', mr: 0.25 }} /> {ratingNumber} */}
-    </Stack>
-  );
+  // const renderRating = (
+  //   <Stack
+  //     direction="row"
+  //     alignItems="center"
+  //     sx={{
+  //       top: 8,
+  //       right: 8,
+  //       zIndex: 9,
+  //       borderRadius: 1,
+  //       position: 'absolute',
+  //       p: '2px 6px 2px 4px',
+  //       typography: 'subtitle2',
+  //       bgcolor: 'warning.lighter',
+  //     }}
+  //   >
+  //     {/* <Iconify icon="eva:star-fill" sx={{ color: 'warning.main', mr: 0.25 }} /> {ratingNumber} */}
+  //   </Stack>
+  // );
 
-  const renderPrice = (
-    <Stack
-      direction="row"
-      alignItems="center"
-      sx={{
-        top: 8,
-        left: 8,
-        zIndex: 9,
-        borderRadius: 1,
-        bgcolor: 'grey.800',
-        position: 'absolute',
-        p: '2px 6px 2px 4px',
-        color: 'common.white',
-        typography: 'subtitle2',
-      }}
-    >
-      {/* {!!priceSale && (
-        <Box component="span" sx={{ color: 'grey.500', mr: 0.25, textDecoration: 'line-through' }}>
-          {fCurrency(priceSale)}
-        </Box>
-      )} */}
-      {/* {fCurrency(price)} */}
-    </Stack>
-  );
+  // const renderPrice = (
+  //   <Stack
+  //     direction="row"
+  //     alignItems="center"
+  //     sx={{
+  //       top: 8,
+  //       left: 8,
+  //       zIndex: 9,
+  //       borderRadius: 1,
+  //       bgcolor: 'grey.800',
+  //       position: 'absolute',
+  //       p: '2px 6px 2px 4px',
+  //       color: 'common.white',
+  //       typography: 'subtitle2',
+  //     }}
+  //   >
+  //     {/* {!!priceSale && (
+  //       <Box component="span" sx={{ color: 'grey.500', mr: 0.25, textDecoration: 'line-through' }}>
+  //         {fCurrency(priceSale)}
+  //       </Box>
+  //     )} */}
+  //     {/* {fCurrency(price)} */}
+  //   </Stack>
+  // );
 
   const renderImages = (
     <Stack
@@ -115,7 +118,9 @@ export default function TourItem({ tour, onView, onEdit, onDelete }) {
       primary={
         <Link component={RouterLink} href={
           // paths.dashboard.tour.details(id)
-          paths.dashboard[path]
+
+          idPath ? paths.dashboard.details(idPath) : paths.dashboard[path]
+         
         } color="inherit">
           {title}
         </Link>
