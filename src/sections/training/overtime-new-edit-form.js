@@ -260,7 +260,6 @@ export default function ProductNewEditForm({ currentProduct }) {
             <RHFTextField name="reason" placeholder="Reason" multiline rows={4} />
                 </Stack>
 
-          
           </Stack>
         </Card>
       </Grid>
